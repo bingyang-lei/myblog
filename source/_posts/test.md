@@ -7,3 +7,4 @@ tags:
 I am a test post.
 - [ ] Test
 - [ ] Test2
+- [ ] Test3
