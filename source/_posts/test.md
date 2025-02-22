@@ -4,7 +4,7 @@ tags:
 ---
 ## 编译的完整过程：
 
-<img src="./compile_fig/编译的全过程.png" alt="image-20240910103913036" style="zoom:67%;" />
+<img src="./compile_fig/fig1.png" alt="image-20240910103913036" style="zoom:67%;" />
 
 ## 第二章-简单总览
 
