@@ -49,8 +49,8 @@ tags:
 
 三个名词：词法单元（包括单元名和可选的属性值），模式，词素
 
-<img src="./test/词法分析三要素.png" alt="image-20240910104546940" style="zoom:67%;" />
-
+<!-- <img src="./test/词法分析三要素.png" alt="image-20240910104546940" style="zoom:67%;" /> -->
+![词法分析三要素](词法分析三要素.png)
 ### 词法单元的规约（正则表达式）
 
 正则表达式：一种描述模式的方法，本质上是通过归纳和递推来定义的。
@@ -61,20 +61,20 @@ tags:
 
 基本运算有三种：选择（并）、连接、闭包，同时还有很多扩展符号，如+，[A-Z]等
 
-<img src="./test/正则表达式定义.png" alt="image-20240910162047708" style="zoom:67%;" />
-
+<!-- <img src="./test/正则表达式定义.png" alt="image-20240910162047708" style="zoom:67%;" /> -->
+![正则表达式定义](正则表达式定义.png)
 一些例子：
 
-<img src="./test/正则表达式例子.png" alt="image-20240923113553618" style="zoom:67%;" />
-
+<!-- <img src="./test/正则表达式例子.png" alt="image-20240923113553618" style="zoom:67%;" /> -->
+![正则表达式例子](正则表达式例子.png)
 ### 词法单元的识别（状态转换图）
 
 可以由正则表达式翻译而来
 
 体现了识别一个状态（词素）之后如何进入下一个状态，如何退出等，即具体怎么识别词法单元。
 
-<img src="./test/词法分析器体系结构.png" alt="image-20240923093001086" style="zoom:67%;" />
-
+<!-- <img src="./test/词法分析器体系结构.png" alt="image-20240923093001086" style="zoom:67%;" /> -->
+![词法分析器体系结构](词法分析器体系结构.png)
 ### 有穷自动机
 
 Lex（词法分析器生成工具）的核心，本质上等价与状态转换图
@@ -83,18 +83,18 @@ Lex（词法分析器生成工具）的核心，本质上等价与状态转换�
 
 分为两类：不确定的有穷自动机（Nondeterministic Finite Automate，NFA），确定的有穷状态自动机（Deterministic Finite Automate，DFA）
 
-<img src="./test/NFA定义.png" alt="image-20240923095654579" style="zoom:67%;" />
-
+<!-- <img src="./test/NFA定义.png" alt="image-20240923095654579" style="zoom:67%;" /> -->
+![NFA定义](NFA定义.png)
 （接受状态也叫终止状态）
 
 区别：NFA中，一个符号可以标记离开同一状态的多条边，如下图所示：（0状态有两条边都是a）
 
-<img src="./test/NFA示例.png" alt="image-20240923095351130" style="zoom:67%;" />
-
+<!-- <img src="./test/NFA示例.png" alt="image-20240923095351130" style="zoom:67%;" /> -->
+![NFA示例](NFA示例.png)
 但是说实话，不太明白空串符号$\epsilon$引入NFA中有什么意义（现在明白了，看下图，感谢崔家才学长的[网站笔记](https://fla.cuijiacai.com/02-fa/#_2-4-%E5%B8%A6%E7%A9%BA%E8%BD%AC%E7%A7%BB%E7%9A%84nfa)）
 
-<img src="./test/空转移NFA.png" alt="image-20240923110739105" style="zoom:67%;" />
-
+<!-- <img src="./test/空转移NFA.png" alt="image-20240923110739105" style="zoom:67%;" /> -->
+![空转移NFA](空转移NFA.png)
 DFA：本质上是NFA的特例，每个NFA都有一个等价的DFA。即它们接受同样的语言。
 
 ### 从正则表达式到自动机
@@ -115,8 +115,8 @@ DFA：本质上是NFA的特例，每个NFA都有一个等价的DFA。即它们�
 
 #### 从正则表达式到NFA：
 
-<img src="./test/正则转NFA算法.png" alt="image-20240923113245090" style="zoom:67%;" />
-
+<!-- <img src="./test/正则转NFA算法.png" alt="image-20240923113245090" style="zoom:67%;" /> -->
+![正则转NFA算法](正则转NFA算法.png)
 非常非常简单但巧妙的算法，体现了“递归定义的魅力”。
 
 只需定义2个基本规则（处理$/epsilon$和$/alpha$两种路径），和三个归纳规则：正则表达式的并、连接、闭包的NFA。
@@ -129,8 +129,8 @@ DFA：本质上是NFA的特例，每个NFA都有一个等价的DFA。即它们�
 
 和词法分析的比较：
 
-<img src="./test/语法和词法分析的比较.png" alt="image-20250222215101197" style="zoom:67%;" />
-
+<!-- <img src="./test/语法和词法分析的比较.png" alt="image-20250222215101197" style="zoom:67%;" /> -->
+![语法和词法分析的比较](语法和词法分析的比较.png)
 - 正则语言是上下文无关语言（CFL）的子集
 
 - 每个正则表达式都可以用一个上下文无关文法来描述，反之不成立
