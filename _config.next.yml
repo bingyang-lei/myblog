@@ -37,10 +37,10 @@ custom_file_path:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
+#scheme: Muse
 #scheme: Mist
 #scheme: Pisces
-#scheme: Gemini
+scheme: Gemini
 
 # Dark Mode
 darkmode: false
@@ -58,7 +58,7 @@ favicon:
   #android_manifest: /manifest.json
 
 # Custom Logo (Warning: Do not support scheme Mist)
-custom_logo: #/uploads/custom-logo.png
+#custom_logo: source/_data/myfig.jpg
 
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/about/cclicenses/
@@ -143,7 +143,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  url: /images/avatar.jpg
   # If true, the avatar will be displayed in circle.
   rounded: false
   # If true, the avatar will be rotated with the cursor.
@@ -642,7 +642,7 @@ motion:
 # Progress bar in the top during page loading.
 # For more information: https://github.com/CodeByZach/pace
 pace:
-  enable: false
+  enable: true
   # All available colors:
   # black | blue | green | orange | pink | purple | red | silver | white | yellow
   color: blue
@@ -671,7 +671,7 @@ comments:
   style: tabs
   # Choose a comment system to be displayed by default.
   # Available values: disqus | disqusjs | changyan | livere | gitalk | utterances
-  active:
+  active: valine
   # Setting `true` means remembering the comment system selected by the visitor.
   storage: true
   # Lazyload all comment systems.
@@ -684,6 +684,22 @@ comments:
     #gitalk:
     #  order: -2
 
+valine:
+  enable: true
+  appId:  # Your leancloud application appid
+  appKey:  # Your leancloud application appkey
+  placeholder: "输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！" # Comment box placeholder
+  avatar: "" # Gravatar style
+  meta: [nick, mail] # Custom comment header
+  pageSize: 10 # Pagination size
+  lang: # Language, available values: en, zh-cn
+  visitor: true # Article reading statistic
+  comment_count: true # If false, comment count will only be displayed in post page, not in home page
+  recordIP: true # Whether to record the commenter IP
+  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
+  enableQQ: true # Whether to enable the Nickname box to automatically get QQ Nickname and QQ Avatar
+  requiredFields: [nick] # Set required fields: [nick] | [nick, mail]
+  
 # Disqus
 # For more information: https://disqus.com
 disqus:
@@ -863,9 +879,9 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/next-theme/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # Show top n results per article, show all results by setting to -1
-  top_n_per_article: 1
+  top_n_per_article: -1
   # Unescape html strings to the readable one.
   unescape: false
   # Preload the search data when the page loads.

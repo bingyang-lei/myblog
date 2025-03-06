@@ -2,13 +2,14 @@
 title: Transformer库简介
 date: 2025-03-01 23:50:51
 tags: AI
+top: true
 ---
 笔者最近对AI agent相关内容较感兴趣，因此对Transformer库进行了简单的了解。
 
 Hugging Face Transformers 库的模块设计非常结构化，不同子类负责不同功能。
 
 以下是核心模块的作用和典型应用场景的详细说明：（注：内容来自AI生成+个人修改）
-
+<!--more-->
 ---
 
 ### 一、**模型核心类**（构建和加载模型）

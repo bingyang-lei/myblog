@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: MonkeyBlog
 subtitle: ''
 description: 'There is only one heroism in the world'
 keywords:
@@ -105,3 +105,10 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# Search Config
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 100
