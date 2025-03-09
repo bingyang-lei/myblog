@@ -2,6 +2,11 @@
 title: OS笔记
 date: 2025-03-01 23:47:14
 top: 2
+tags: 
+- OS
+categories: 
+- Lect Notes
+- System
 ---
 南京大学蒋炎岩老师《操作系统》课程笔记
 ## 绪论
