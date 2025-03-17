@@ -20,9 +20,9 @@ categories:
 > A body of software, in fact, that is responsible for *making it easy to run programs* (even allowing you to seemingly run many at the same time), allowing programs to share memory, enabling programs to interact with devices, and other fun stuff like that. (OSTEP)
 
 ### 应用视角的操作系统
-
-> 操作系统最大的职责就是让我们**在编程时感受不到操作系统的存在**——我们在编程时想象程序 “独占整个计算机，逐条指令执行”，大部分时候都不用 “考虑” 操作系统的存在。当系统调用发生时，程序执行被完全暂停，但操作系统依然在工作——就像麻醉后醒来，周围的环境发生了变化，但我们完全没有感到时间的流逝。
 <!--more-->
+> 操作系统最大的职责就是让我们**在编程时感受不到操作系统的存在**——我们在编程时想象程序 “独占整个计算机，逐条指令执行”，大部分时候都不用 “考虑” 操作系统的存在。当系统调用发生时，程序执行被完全暂停，但操作系统依然在工作——就像麻醉后醒来，周围的环境发生了变化，但我们完全没有感到时间的流逝。
+
 程序是个状态机，但有些东西单靠程序本身无法实现。
 
 “纯粹的计算” 只能改变**程序内的状态**，但有些 API 涉及到 “程序外的状态”，这就和操作系统有关了
