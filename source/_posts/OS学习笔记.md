@@ -1415,4 +1415,135 @@ RAID：存储设备的虚拟化
 
 > 总结: 存储系统支撑了当今的互联网工业——**每个 SSD 都是 “套娃” 的计算机系统**；它们又组成了大规模存储网络，再经过操作系统的 write-ahead logging、缓存等复杂的机制，最终为应用程序提供了一套简洁的文件系统 API，支撑了我们今天看到的数字世界
 
+### 数据库与对象存储
+
+#### 关系型数据库
+
+- Everything is a table
+  - 每行一个对象；对象可以用 id 索引其他对象
+
+“ACID” 数据库
+
+- A (Atomicity), C (Consistency), I (Isolation), D (Durability)
+  - Strong serializability: 查询结果 “按照某种顺序完成”
+  - Strong crash consistency: 系统 crash 也不会损坏或丢失
+
+支持任意长 (允许混合任意计算) 的 Transaction
+
+- 这个特性太重要了
+
+ACID数据库的本质：学过《操作系统》就很好理解了
+
+- 一把大锁保平安的效果
+- 大规模并行执行的性能
+- 完全自动的崩溃回复
+  - 应用数据交给数据库 = **一劳永逸**; [甚至还可以 Hack](https://www.zhihu.com/question/602083441/answer/3038238487)
+
+> 总结：在操作系统为我们提供的文件、目录、网络 API 上，开发者可以自由地创建更多、更复杂、更可靠的系统。我们看到了关系数据库的兴起，看到了云计算时代下 NoSQL 的繁荣，和今天的 AI 时代——在这几波浪潮之间，虽然操作系统内核的实现发生了巨大的变化，但操作系统的 API 相当惊人地稳定，这种 “稳定性” 支撑了应用生态的繁荣，这也是操作系统作为 “平台” 的使命
+
+### 计算机系统安全
+
+#### 安全简介
+
+- 不想给别人看的，别人就看不到：confidentiality
+- 不想让别人改的，别人就改不了：integrity
+- 属于我的，别人不能让我用不了：available
+
+#### 访问控制
+
+进程 + 虚拟内存已经实现了隔离
+
+访问控制：**限制程序对操作系统对象的访问**
+
+- 拒绝越权访问 →→ Confidentiality
+- 拒绝越权修改 →→ Integrity
+- (再加上公平资源调度 →→ Availability)
+
+<img src="./../AppData/Roaming/Typora/typora-user-images/access_control.png" alt="image-20250529142402494" style="zoom:67%;" />
+
+更简单的机制：uid, gid, mode（用整数表达身份）
+
+- uid = 0→root, 其他都是 “普通用户”
+  - root 可以访问所有对象，也可以 setuid
+  - 子进程继承父进程的 uid
+- gid “完全自由” (虽然一般 0 是 root)
+  - 一个用户可以属于多个组
+- mode: r, w, x 的权限
+  - 例子：owner 只写不可读，audit 组可以读的日志文件
+
+- /etc/passwd：每行一个用户
+  - **username:password:uid:gid:comment:home:shell**
+  - 现代系统通常使用 shadow 文件存储密码的 hash
+
+**uid, gid, mode 并不是实现访问控制的唯一方法**
+
+- Access Control List (ACL)
+  - 基于 xattr 实现，支持为任意数量的用户和组设置权限
+- SELinux/AppArmor
+  - sudo apparmor_status | ag --gpt -q Explain
+- Capabilities
+  - capsh --drop=cap_net_raw -- -c 'ping 127.0.0.1' (注意这是 fail on execve; getcap 查看 capabilities)
+
+### 现代应用程序架构
+
+> 进程 (运行的程序)，一直以来都是操作系统中的核心抽象。作为应用程序的主体，运行它的方式却在多年的发展中历经了许多变化。
+
+#### 虚拟机和容器
+
+容器的两个核心概念是namespace和cgroup
+
+实现隔离：
+
+- Linux namespaces: /proc/[pid]/ns/
+  - 将系统资源（如进程、网络、文件系统等）划分为独立的逻辑空间，使不同 Namespace 中的进程彼此隔离，仿佛运行在不同的系统中
+  - lsns 可以查看 (strace)
+
+实现资源的控制：
+
+- “圈一些进程”，设定资源使用策略
+- 祝贺，你发明了 cgroups
+  - cat /proc/*/cgroup
+  - /sys/fs/cgroup
+
+**云时代的虚拟机：**
+
+- 容器就和虚拟机**完全一样**
+- 开销比虚拟机低很多，安全性略低
+  - 这样不就可以在一台物理上部署更多的服务了吗？
+    - **黑心商人**: 💰的机会来啦！
+
+#### 云原生与微服务
+
+我们有**容器** (虚拟机) 了
+
+- 本来虚拟机里也是 HTTP Server (httpd)
+- 干脆把程序拆成 Microservices?
+  - Cloud Native: 云会负责容器管理、API Gateway、负载均衡……
+
+Serverless：容器的概念都可以不要了
+
+- Function as a service(FaaS)
+
+- 你只需要实现 int foo() {}
+- 剩下的都交给云厂商
+  - 黑心商人：都不需要 oversubscribe 了，直接按量计费，最大程度榨干机器性能
+
+
+
+### 课程总结
+
+我们有了推理模型
+
+- o1 →→ o3-mini →→ deepseek-r1
+- 用 token sequence 模拟 System II 是可以的
+  - 你是一个 Finite State Machine
+  - 但你有了纸和笔以后就是 Turing Machine 了
+  - 期待 tree-like memory based LLM ![😁]
+  - 感觉这个想法和张岳老师的内存有些相似，append only和search的结合，Tree search的利用
+
+我看到了编程语言的未来
+
+- Informal semantics of programming languages（写一句代码生成一个embeding，用于静态分析等？）（因为程序写出来那一刻其实包含了一些调用关系，是保存时候事后分析的时候丢失的）
+- Monolithic programming
+  - 但似乎我只配做世界的观测者？
 
