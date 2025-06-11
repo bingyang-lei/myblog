@@ -1459,7 +1459,7 @@ ACID数据库的本质：学过《操作系统》就很好理解了
 - 拒绝越权修改 →→ Integrity
 - (再加上公平资源调度 →→ Availability)
 
-<img src="./../AppData/Roaming/Typora/typora-user-images/access_control.png" alt="image-20250529142402494" style="zoom:67%;" />
+![论文流程](access_control.png)
 
 更简单的机制：uid, gid, mode（用整数表达身份）
 
