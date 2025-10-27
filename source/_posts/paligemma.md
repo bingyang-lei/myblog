@@ -152,3 +152,20 @@ $$
 - 一个embeding的不同维度（即pos固定，i变化）可以关注不同的信息：
   - i较小时，sin和cos函数的周期小，频率高，捕捉局部依赖
   - i较大时，sin和cos函数的周期大，频率低，捕捉长程依赖（即要隔好几个pos才回到同一函数值，内积才会相近）
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="bingyang-lei/myblog"
+        data-repo-id="R_kgDON6fqSw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDON6fqS84CxHDo"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
