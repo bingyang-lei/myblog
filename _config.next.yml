@@ -942,3 +942,18 @@ vendors:
 css: css
 js: js
 images: images
+
+
+giscus:
+  enable: true
+  repo: bingyang-lei/myblog
+  repo_id: R_kgDON6fqSw
+  category: Announcements
+  category_id: DIC_kwDON6fqS84CxHDo
+  mapping: title
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: top
+  lang: zh-CN
+  loading: lazy
+  crossorigin: anonymous
